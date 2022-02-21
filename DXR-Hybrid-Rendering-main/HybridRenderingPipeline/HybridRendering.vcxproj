@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CommonPasses\CopyToOutputPass.cpp" />
+    <ClCompile Include="..\CommonPasses\LightProbeGBufferPass.cpp" />
+    <ClCompile Include="..\CommonPasses\SimpleAccumulationPass.cpp" />
+    <ClCompile Include="..\CommonPasses\SimpleGBufferPass.cpp" />
+    <ClCompile Include="..\CommonPasses\SimpleToneMappingPass.cpp" />
+    <ClCompile Include="..\PathTracingPipeline\Passes\GlobalIllumination.cpp" />
+    <ClCompile Include="..\SharedUtils\FullscreenLaunch.cpp" />
+    <ClCompile Include="..\SharedUtils\RasterLaunch.cpp" />
+    <ClCompile Include="..\SharedUtils\RayLaunch.cpp" />
+    <ClCompile Include="..\SharedUtils\RenderingPipeline.cpp" />
+    <ClCompile Include="..\SharedUtils\RenderPass.cpp" />
+    <ClCompile Include="..\SharedUtils\ResourceManager.cpp" />
+    <ClCompile Include="..\SharedUtils\SceneLoaderWrapper.cpp" />
+    <ClCompile Include="..\SharedUtils\SimpleVars.cpp" />
+    <ClCompile Include="Passes\AmbientOcclusionPass.cpp" />
+    <ClCompile Include="Passes\ComparePass.cpp" />
+    <ClCompile Include="Passes\DirectLightingPass.cpp" />
+    <ClCompile Include="Passes\FinalStagePass.cpp" />
+    <ClCompile Include="Passes\MergePass.cpp" />
+    <ClCompile Include="Passes\ReflectionPass.cpp" />
+    <ClCompile Include="Passes\ShadowPass.cpp" />
+    <ClCompile Include="HybridRendering.cpp" />
+    <ClCompile Include="Passes\SVGFPass.cpp" />
+    <ClCompile Include="Passes\SVGFShadowPass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CommonPasses\CopyToOutputPass.h" />
+    <ClInclude Include="..\CommonPasses\LightProbeGBufferPass.h" />
+    <ClInclude Include="..\CommonPasses\SimpleAccumulationPass.h" />
+    <ClInclude Include="..\CommonPasses\SimpleGBufferPass.h" />
+    <ClInclude Include="..\CommonPasses\SimpleToneMappingPass.h" />
+    <ClInclude Include="..\PathTracingPipeline\Passes\GlobalIllumination.h" />
+    <ClInclude Include="..\SharedUtils\FullscreenLaunch.h" />
+    <ClInclude Include="..\SharedUtils\RasterLaunch.h" />
+    <ClInclude Include="..\SharedUtils\RayLaunch.h" />
+    <ClInclude Include="..\SharedUtils\RenderingPipeline.h" />
+    <ClInclude Include="..\SharedUtils\RenderPass.h" />
+    <ClInclude Include="..\SharedUtils\ResourceManager.h" />
+    <ClInclude Include="..\SharedUtils\SceneLoaderWrapper.h" />
+    <ClInclude Include="..\SharedUtils\SimpleVars.h" />
+    <ClInclude Include="Passes\AmbientOcclusionPass.h" />
+    <ClInclude Include="Passes\ComparePass.h" />
+    <ClInclude Include="Passes\DirectLightingPass.h" />
+    <ClInclude Include="Passes\FinalStagePass.h" />
+    <ClInclude Include="Passes\MergePass.h" />
+    <ClInclude Include="Passes\ReflectionPass.h" />
+    <ClInclude Include="Passes\ShadowPass.h" />
+    <ClInclude Include="Passes\SVGFPass.h" />
+    <ClInclude Include="Passes\SVGFShadowPass.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Falcor\Framework\FalcorSharedObjects\FalcorSharedObjects.vcxproj">
+      <Project>{2c535635-e4c5-4098-a928-574f0e7cd5f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Falcor\Framework\Source\Falcor.vcxproj">
+      <Project>{3b602f0e-3834-4f73-b97d-7dfc91597a98}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\aoTracing.rt.hlsl" />
+    <None Include="Data\aoCommonUtils.hlsli" />
+    <None Include="Data\commonUtils.hlsli" />
+    <None Include="Data\halton.hlsli" />
+    <None Include="Data\rtShadowRay.hlsli" />
+    <None Include="Data\shadowsUtils.hlsli" />
+    <None Include="Data\shadowPass.rt.hlsl" />
+    <None Include="Data\lambert.ps.hlsl" />
+    <None Include="Data\finalStage.ps.hlsl" />
+    <None Include="Data\standardShadowRay.hlsli" />
+    <None Include="Data\SVGFShadow\MathConstants.hlsli" />
+    <None Include="Data\SVGFShadow\MathHelpers.slang" />
+    <None Include="Data\SVGFShadow\SVGFCommon.slang" />
+    <None Include="Data\SVGF\MathConstants.hlsli" />
+    <None Include="Data\SVGF\SVGFAtrous.ps.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\reflection.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\SVGF\SVGFFilterMoments.ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGF\SVGFCommon.slang">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGF\SVGFFinalModulate.ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGF\SVGFPackLinearZAndNormal.ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGF\SVGFReproject.ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\SVGF\MathHelpers.slang">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\compare.ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compute</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\SVGFShadow\SVGFAtrous.ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGFShadow\SVGFFilterMoments.ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGFShadow\SVGFFinalModulate.ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGFShadow\SVGFPackLinearZAndNormal.ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Data\SVGFShadow\SVGFReproject.ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\merge.ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{73E5866E-B56E-47A9-BB31-9D116843BC8C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DXRT</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <ProjectName>HybridRenderingPipeline</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\Falcor\Framework\Source\Falcor.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\Falcor\Framework\Source\Falcor.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>FALCOR_DXR;WIN32;SOLUTION_DIR=R"($(SolutionDir))";_DEBUG;_SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(FALCOR_DXR_DIR)\DX12\;$(FALCOR_DXR_DIR)..\..\Source\;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(FALCOR_CORE_DIRECTORY)\lib\debugdxr;$(SolutionDir)\Framework\Externals\DXRT\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Shlwapi.lib;assimp.lib;freeimage.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;avcodec.lib;avutil.lib;avformat.lib;swscale.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>FALCOR_DXR;WIN32;SOLUTION_DIR=R"($(SolutionDir))";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(FALCOR_DXR_DIR)\DX12\;$(FALCOR_DXR_DIR)..\..\Source\;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(FALCOR_CORE_DIRECTORY)\lib\releasedxr;$(SolutionDir)\Framework\Externals\DXRT\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Shlwapi.lib;assimp.lib;freeimage.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;avcodec.lib;avutil.lib;avformat.lib;swscale.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
