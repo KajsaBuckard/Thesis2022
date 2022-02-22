@@ -150,11 +150,11 @@ namespace Falcor
         }
 
         ReflectionBasicType::Type callType = getReflectionTypeFromCType<VarType>();
-        if (desc.type != callType)
+       /* if (desc.type != callType)
         {
             logError("Error when setting variable at offset " + std::to_string(offset) + ". Type mismatch. Expecting " + to_string(desc.type) + " but the user provided a " + to_string(callType));
             return false;
-        }
+        }*/
 
         if (count != 0 && count > desc.count)
         {
