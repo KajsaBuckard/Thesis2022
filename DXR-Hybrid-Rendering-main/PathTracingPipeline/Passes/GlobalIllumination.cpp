@@ -99,7 +99,7 @@ void GlobalIlluminationPass::execute(RenderContext* pRenderContext)
 	globalVars["GlobalCB"]["gFrameCount"]   = mFrameCount++;
 	globalVars["GlobalCB"]["gDoIndirectGI"] = mDoIndirectGI;
 	globalVars["GlobalCB"]["gDoDirectGI"]   = mDoDirectGI;
-	globalVars["GlobalCB"]["gMaxDepth"]     = mUserSpecifiedRayDepth;
+	globalVars["GlobalCB"]["gMaxDepth"] = static_cast<uint32_t>( mUserSpecifiedRayDepth ); //globalVars["GlobalCB"]["gMaxDepth"]     = mUserSpecifiedRayDepth;
     globalVars["GlobalCB"]["gEmitMult"]     = 1.0f;
 	globalVars["GlobalCB"]["gOpenScene"]	= mIsOpenScene;
 	globalVars["gPos"]         = mpResManager->getTexture("WorldPosition");
