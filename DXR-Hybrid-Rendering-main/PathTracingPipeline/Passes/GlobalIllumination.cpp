@@ -44,7 +44,13 @@ bool GlobalIlluminationPass::initialize(RenderContext* pRenderContext, ResourceM
 	mpResManager->requestTextureResource(ResourceManager::kEnvironmentMap);
 
 	// Set the default scene to load
+	//mpResManager->setDefaultSceneName("Data/pink_room/pink_room.fscene");
 	mpResManager->setDefaultSceneName("Data/picapica/picapica.fscene");
+	//mpResManager->setDefaultSceneName("C:/Users/kajsa.buckard/Documents/TestScene/untitled2.fscene");
+	//mpResManager->setDefaultSceneName("Data/raytracing_scene (2)/raytracing_scene_mesh.fscene");
+	//mpResManager->setDefaultSceneName("C:/Users/kajsa.buckard/Desktop/Scene/SunTemple_v4/SunTemple/SunTemple.fscene");
+
+
 
 	// Create our wrapper around a ray tracing pass.  Tell it where our ray generation shader and ray-specific shaders are
 	mpRays = RayLaunch::create(kFileRayTrace, kEntryPointRayGen);
@@ -74,7 +80,7 @@ void GlobalIlluminationPass::initScene(RenderContext* pRenderContext, Scene::Sha
 void GlobalIlluminationPass::renderGui(Gui* pGui)
 {
 	int dirty = 0;
-	dirty |= (int)pGui->addIntVar("Max RayDepth", mUserSpecifiedRayDepth, 0, mMaxPossibleRayDepth);
+	dirty |= (int)pGui->addIntVar("Max RayDepth", mUserSpecifiedRayDepth, 0, mMaxPossibleRayDepth); //0-8
 	dirty |= (int)pGui->addCheckBox(mDoDirectGI ? "Compute direct illumination" : "Skipping direct illumination",
 		                            mDoDirectGI);
 	dirty |= (int)pGui->addCheckBox(mDoIndirectGI ? "Shooting global illumination rays" : "Skipping global illumination", 
@@ -99,7 +105,7 @@ void GlobalIlluminationPass::execute(RenderContext* pRenderContext)
 	globalVars["GlobalCB"]["gFrameCount"]   = mFrameCount++;
 	globalVars["GlobalCB"]["gDoIndirectGI"] = mDoIndirectGI;
 	globalVars["GlobalCB"]["gDoDirectGI"]   = mDoDirectGI;
-	globalVars["GlobalCB"]["gMaxDepth"] = static_cast<uint32_t>( mUserSpecifiedRayDepth ); //globalVars["GlobalCB"]["gMaxDepth"]     = mUserSpecifiedRayDepth;
+	globalVars["GlobalCB"]["gMaxDepth"] = static_cast<uint32_t>( mUserSpecifiedRayDepth ); 
     globalVars["GlobalCB"]["gEmitMult"]     = 1.0f;
 	globalVars["GlobalCB"]["gOpenScene"]	= mIsOpenScene;
 	globalVars["gPos"]         = mpResManager->getTexture("WorldPosition");
@@ -110,7 +116,8 @@ void GlobalIlluminationPass::execute(RenderContext* pRenderContext)
 	globalVars["gOutput"]      = pDstTex;
 
 	// Shoot our rays and shade our primary hit points
-	mpRays->execute( pRenderContext, mpResManager->getScreenSize() );
+	mpRays->execute( pRenderContext, mpResManager->getScreenSize());
+	
 
 }
 

@@ -240,7 +240,7 @@ namespace Falcor
         DeviceApiData* pData = new DeviceApiData;
         mpApiData = pData;
         UINT dxgiFlags = 0;
-        if (desc.enableDebugLayer)
+        /*if (desc.enableDebugLayer)
         {
             ID3D12DebugPtr pDx12Debug;
             if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&pDx12Debug))))
@@ -248,7 +248,7 @@ namespace Falcor
                 pDx12Debug->EnableDebugLayer();
             }
             dxgiFlags |= DXGI_CREATE_FACTORY_DEBUG;
-        }
+        }*/
 
         // Create the DXGI factory
         d3d_call(CreateDXGIFactory2(dxgiFlags, IID_PPV_ARGS(&mpApiData->pDxgiFactory)));
@@ -261,7 +261,7 @@ namespace Falcor
 
         mSupportedFeatures = getSupportedFeatures(mApiHandle);
 
-        if (desc.enableDebugLayer)
+        /*if (desc.enableDebugLayer)
         {
             MAKE_SMART_COM_PTR(ID3D12InfoQueue);
             ID3D12InfoQueuePtr pInfoQueue;
@@ -275,7 +275,7 @@ namespace Falcor
             f.DenyList.NumIDs = arraysize(hideMessages);
             f.DenyList.pIDList = hideMessages;
             pInfoQueue->AddStorageFilterEntries(&f);
-        }
+        }*/
 
         for (uint32_t i = 0; i < kQueueTypeCount; i++)
         {

@@ -56,8 +56,8 @@ protected:
 	bool                    mDoDirectGI = true;
 
 	int32_t                 mUserSpecifiedRayDepth = 1;   ///<  What is the current maximum ray depth
-	const int32_t           mMaxPossibleRayDepth = 8;     ///<  The largest ray depth we support (without recompile)
-	bool                    mIsOpenScene = true;
+	const int32_t           mMaxPossibleRayDepth = 10;     ///<  The largest ray depth we support (without recompile)
+	bool                    mIsOpenScene = false;
 
 	// What texture should was ask the resource manager to store our result in?
 	std::string             mOutputTextureName;

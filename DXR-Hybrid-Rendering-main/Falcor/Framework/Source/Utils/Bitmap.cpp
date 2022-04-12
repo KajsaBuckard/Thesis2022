@@ -46,7 +46,7 @@ namespace Falcor
     Bitmap::UniqueConstPtr Bitmap::createFromFile(const std::string& filename, bool isTopDown)
     {
         std::string fullpath;
-        if(findFileInDataDirectories(filename, fullpath) == false)
+        if (findFileInDataDirectories(filename, fullpath) == false)
         {
             msgBox("Error when loading image file " + filename + "\n. Can't find the file");
             return nullptr;

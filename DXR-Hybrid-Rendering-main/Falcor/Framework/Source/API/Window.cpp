@@ -444,14 +444,12 @@ namespace Falcor
         glfwShowWindow(mpGLFWWindow);
         glfwFocusWindow(mpGLFWWindow);
                 
-        //int counter = 0;
         while (glfwWindowShouldClose(mpGLFWWindow) == false)
         {
 
             glfwPollEvents();
-            //logError(std::to_string(counter)); //***
             mpCallbacks->renderFrame(); 
-            //counter = counter + 1; //***
+
         }
     }
 

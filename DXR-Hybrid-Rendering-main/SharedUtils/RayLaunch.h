@@ -96,7 +96,7 @@ public:
 
 	// Create a new hit shader.  Either entry point can be the null string "" to not use a shader.  (But one of the two must be non-null)
 	uint32_t addHitShader(const std::string& hitShaderFile, const std::string& closestHitEntryPoint, const std::string& anyHitEntryPoint);
-
+		
 	// NOTE: Advanced. Not fully tested all the way through Falcor's abstractions.  May not work as desired/expected. 
 	//    Create a new hit group with closest hit, any-hit, and intersection shader. Use the null string "" for no shader.
 	uint32_t addHitGroup(const std::string& hitShaderFile, const std::string& closestHitEntryPoint, const std::string& anyHitEntryPoint, const std::string& intersectionEntryPoint);

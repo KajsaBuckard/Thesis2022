@@ -22,30 +22,30 @@
         "l1_up"     : [ 2.0, 1.0, 0.0 ]
     },
     "models": [
-        {
-            "file": "pink_room.fbx",
-            "name": "pink_room",
-            "instances": [
-                {
-                    "name": "pink_room0",
-                    "translation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "scaling": [
-                        1.0,
-                        1.0,
-                        1.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ]
-                }
+      {
+        "file": "pink_room.fbx",
+        "name": "pink_room",
+        "instances": [
+          {
+            "name": "pink_room0",
+            "translation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scaling": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
             ]
-        }
+          }
+        ]
+      }
     ],
     "lights": [
         {

@@ -67,10 +67,10 @@ namespace Falcor
         if (mpRenderContext) mpRenderContext->flush();  // This will bind the descriptor heaps
 
         mVsyncOn = desc.enableVsync;
-
+        
         mpResourceAllocator = ResourceAllocator::create(1024 * 1024 * 2, mpRenderContext->getLowLevelData()->getFence());
-
         mpFrameFence = GpuFence::create();
+       
 
         // Update the FBOs
         if (updateDefaultFBO(mpWindow->getClientAreaWidth(), mpWindow->getClientAreaHeight(), desc.colorFormat, desc.depthFormat) == false)

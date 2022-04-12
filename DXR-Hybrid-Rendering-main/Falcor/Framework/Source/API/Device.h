@@ -62,7 +62,7 @@ namespace Falcor
             int apiMinorVersion = DEFAULT_API_MINOR_VERSION;                ///< Requested API minor version. Context creation fails if this version is not supported.
             std::vector<std::string> requiredExtensions;                    ///< Extensions required by the sample
             bool enableVsync = false;                                       ///< Controls vertical-sync
-            bool enableDebugLayer = DEFAULT_ENABLE_DEBUG_LAYER;             ///< Enable the debug layer. The default for release build is false, for debug build it's true.
+            //bool enableDebugLayer = DEFAULT_ENABLE_DEBUG_LAYER;             ///< Enable the debug layer. The default for release build is false, for debug build it's true.
             bool enableVR = false;                                          ///< Create a device matching OpenVR requirements
 
             static_assert((uint32_t)LowLevelContextData::CommandQueueType::Direct == 2, "Default initialization of cmdQueues assumes that Direct queue index is 2");

@@ -71,6 +71,9 @@ float3 ggxDirect(inout uint rndSeed, HaltonState hState, float3 hit, float3 N, f
 {
 	// Pick a random light from our scene to shoot a shadow ray towards
 	int lightToSample = min(int(nextRand(rndSeed) * gLightsCount), gLightsCount - 1);
+	
+	//hit = hit + N * 0.01f; //darker 2022-03-28
+	//hit = hit + N * 0.1f; //2022-03-28
 
 	// Query the scene to find info about the randomly selected light
 	float distToLight;
@@ -111,6 +114,9 @@ float3 ggxIndirect(inout uint rndSeed, HaltonState hState, float3 hit, float3 N,
 
 	// We'll need NdotV for both diffuse and specular...
 	float NdotV = saturate(dot(N, V));
+
+	//hit = hit - N * 0.00015f; // a bit darker 2022-03-28
+	//hit = hit - N * 0.0015f; //2022-03-28
 
 	// If we randomly selected to sample our diffuse lobe...
 	if (chooseDiffuse)

@@ -1,174 +1,246 @@
 {
-    "version": 2,
-    "camera_speed": 1.0,
-    "lighting_scale": 1.0,
-    "active_camera": "Camera0",
-    "ambient_intensity": [
-        0.501960813999176,
-        0.29411765933036806,
-        0.29411765933036806
-    ],
-    "user_defined": {
-        "numLights" : 2,
-        "l0_power"  : [ 60.0, 60.0, 60.0 ],
-        "l0_extent" : [ 1.0, 0.5 ],
-        "l0_center" : [ -2.0, 0.5, -4.0 ],
-        "l0_left"   : [ -1.0, 0.0, 0.0 ],
-        "l0_up"     : [ 0.0, 1.0, 0.0 ],
-        "l1_power"  : [ 70.0, 60.0, 60.0 ],
-        "l1_extent" : [ 13.0, 0.5 ],
-        "l1_center" : [ -8.0, 0.5, -4.0 ],
-        "l1_left"   : [ -4.0, 0.0, 0.0 ],
-        "l1_up"     : [ 2.0, 1.0, 0.0 ]
-    },
-    "models": [
+  "version": 2,
+  "camera_speed": 1.0,
+  "lighting_scale": 1.0,
+  "active_camera": "Camera89",
+  "ambient_intensity": [
+    0.501960813999176,
+    0.29411765933036806,
+    0.29411765933036806
+  ],
+  "user_defined": {
+    "numLights": 2,
+    "l0_power": [ 60.0, 60.0, 60.0 ],
+    "l0_extent": [ 1.0, 0.5 ],
+    "l0_center": [ -2.0, 0.5, -4.0 ],
+    "l0_left": [ -1.0, 0.0, 0.0 ],
+    "l0_up": [ 0.0, 1.0, 0.0 ],
+    "l1_power": [ 70.0, 60.0, 60.0 ],
+    "l1_extent": [ 13.0, 0.5 ],
+    "l1_center": [ -8.0, 0.5, -4.0 ],
+    "l1_left": [ -4.0, 0.0, 0.0 ],
+    "l1_up": [ 2.0, 1.0, 0.0 ]
+  },
+  "models": [
+    {
+      "file": "scene.gltf",
+      "name": "pink_room",
+      "instances": [
         {
-            "file": "scene.gltf",
-            "name": "pink_room",
-            "instances": [
-                {
-                    "name": "pink_room0",
-                    "translation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "scaling": [
-                        1.0,
-                        1.0,
-                        1.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ]
-                }
-            ]
+          "name": "pink_room0",
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scaling": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
         }
-    ],
-    "lights": [
+      ]
+    }
+  ],
+  "lights": [
+    {
+      "name": "dirLight0",
+      "type": "dir_light",
+      "intensity": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "direction": [
+        -0.5642265796661377,
+        -0.5452651977539063,
+        -0.7549999952316284
+      ]
+    },
+    {
+      "name": "dirLight1",
+      "type": "dir_light",
+      "intensity": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "direction": [
+        0.5642265796661377,
+        -0.5452651977539063,
+        -0.7549999952316284
+      ]
+    }
+  ],
+  "cameras": [
+    {
+      "name": "Camera0",
+      "pos": [
+        30,
+        30,
+        30
+      ],
+      "target": [
+        -2,
+        2,
+        -2
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "focal_length": 21.0,
+      "depth_range": [
+        0.10000000149011612,
+        10000.0
+      ],
+      "aspect_ratio": 1.0
+    },
+    {
+      "name": "Camera89",
+      "pos": [
+        0,
+        160.04,
+        0
+      ],
+      "target": [
+        -2,
+        2,
+        -2
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "focal_length": 60.0,
+      "depth_range": [
+        0.10000000149011612,
+        10000.0
+      ],
+      "aspect_ratio": 1.0
+    },
+    {
+      "name": "Camera6725",
+      "pos": [
+        30,
+        99.4,
+        30
+      ],
+      "target": [
+        -2,
+        2,
+        -2
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "focal_length": 40.0,
+      "depth_range": [
+        0.10000000149011612,
+        10000.0
+      ],
+      "aspect_ratio": 1.0
+    },
+    {
+      "name": "Camera45",
+      "pos": [
+        30,
+        40.52058,
+        30
+      ],
+      "target": [
+        -2,
+        2,
+        -2
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "focal_length": 21.0,
+      "depth_range": [
+        0.10000000149011612,
+        10000.0
+      ],
+      "aspect_ratio": 1.0
+    }
+  ],
+  "paths": [
+    {
+      "name": "Path 0",
+      "loop": true,
+      "frames": [
         {
-            "name": "dirLight0",
-            "type": "dir_light",
-            "intensity": [
-                0.5,
-                0.5,
-                0.5
-            ],
-            "direction": [
-                -0.5642265796661377,
-                -0.5452651977539063,
-                -0.7549999952316284
-            ]
+          "time": 0.0,
+          "pos": [
+            20,
+            10,
+            30
+          ],
+          "target": [
+            -2,
+            2,
+            -2
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ]
         },
         {
-            "name": "dirLight1",
-            "type": "dir_light",
-            "intensity": [
-                0.5,
-                0.5,
-                0.5
-            ],
-            "direction": [
-                0.5642265796661377,
-                -0.5452651977539063,
-                -0.7549999952316284
-            ]
-        }
-    ],
-    "cameras": [
+          "time": 15.0,
+          "pos": [
+            0,
+            10,
+            30
+          ],
+          "target": [
+            -2,
+            2,
+            -2
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ]
+        },
         {
-            "name": "Camera0",
-            "pos": [
-                20,
-                10,
-                30
-            ],
-            "target": [
-                -2,
-                2,
-                -2
-            ],
-            "up": [
-                0,
-                1,
-                0
-            ],
-            "focal_length": 21.0,
-            "depth_range": [
-                0.10000000149011612,
-                10000.0
-            ],
-            "aspect_ratio": 1.0
+          "time": 30.0,
+          "pos": [
+            -15,
+            10,
+            30
+          ],
+          "target": [
+            -2,
+            2,
+            -2
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ]
         }
-    ],
-    "paths": [
+      ],
+      "attached_objects": [
         {
-            "name": "Path 0",
-            "loop": true,
-            "frames": [
-                {
-                    "time": 0.0,
-                    "pos": [
-                        20,
-                        10,
-                        30
-                    ],
-                    "target": [
-                        -2,
-                        2,
-                        -2
-                    ],
-                    "up": [
-                        0,
-                        1,
-                        0
-                    ]
-                },
-                {
-                    "time": 15.0,
-                    "pos": [
-                        0,
-                        10,
-                        30
-                    ],
-                    "target": [
-                        -2,
-                        2,
-                        -2
-                    ],
-                    "up": [
-                        0,
-                        1,
-                        0
-                    ]
-                },
-                {
-                    "time": 30.0,
-                    "pos": [
-                        -15,
-                        10,
-                        30
-                    ],
-                    "target": [
-                        -2,
-                        2,
-                        -2
-                    ],
-                    "up": [
-                        0,
-                        1,
-                        0
-                    ]
-                }
-            ],
-            "attached_objects": [
-                {
-                    "type": "camera",
-                    "name": "Camera0"
-                }
-            ]
+          "type": "camera",
+          "name": "Camera6725"
         }
-    ]
+      ]
+    }
+  ]
 }

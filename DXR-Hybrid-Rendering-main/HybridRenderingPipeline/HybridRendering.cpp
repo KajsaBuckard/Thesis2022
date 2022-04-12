@@ -52,6 +52,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		pipeline->setPass(idx++, SVGFPass::create("reflectionFilter", "reflectionOut"));
 	}
 	pipeline->setPass(idx++, AmbientOcclusionPass::create("aoChannel"));
+	//pipeline->setPass(idx++, AmbientOcclusionPass::create("shadowChannel"));	//When printing AO shadows
 	pipeline->setPass(idx++, ShadowPass::create("shadowChannel"));
 	pipeline->setPass(idx++, SVGFShadowPass::create("shadowFilter", "shadowChannel", "aoChannel"));
 	pipeline->setPass(idx++, FinalStagePass::create(perf ? ResourceManager::kOutputChannel : "finalOutput"));

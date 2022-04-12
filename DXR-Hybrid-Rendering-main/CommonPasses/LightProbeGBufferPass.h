@@ -63,7 +63,7 @@ protected:
 	std::mt19937 mRng;                                  ///< Our random number generate.  Set up in initialize()
 
 	// Information about our background color / environment map
-	vec3               mBgColor = vec3(0.5f, 0.5f, 1.0f);
+	vec3               mBgColor = vec3(0.5f, 0.5f, 1.0f); 
 	Texture::SharedPtr mLightProbe;
 	bool               mUseLightProbe = true;
 

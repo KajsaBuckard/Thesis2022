@@ -18,35 +18,42 @@
 
 #pragma once
 #include "../SharedUtils/RenderPass.h"
-#include "../SharedUtils/RasterLaunch.h"
+#include "../SharedUtils/RayLaunch.h"
 
-class SimpleGBufferPass : public ::RenderPass, inherit_shared_from_this<::RenderPass, SimpleGBufferPass>
+
+class RayTracedGBufferPass : public ::RenderPass, inherit_shared_from_this<::RenderPass, RayTracedGBufferPass>
 {
 public:
-    using SharedPtr = std::shared_ptr<SimpleGBufferPass>;
-    using SharedConstPtr = std::shared_ptr<const SimpleGBufferPass>;
+	using SharedPtr = std::shared_ptr<RayTracedGBufferPass>;
+	using SharedConstPtr = std::shared_ptr<const RayTracedGBufferPass>;
 
-    static SharedPtr create() { return SharedPtr(new SimpleGBufferPass()); }
-    virtual ~SimpleGBufferPass() = default;
+	static SharedPtr create() { return SharedPtr(new RayTracedGBufferPass()); }
+	virtual ~RayTracedGBufferPass() = default;
 
 protected:
-	SimpleGBufferPass() : ::RenderPass("Simple G-Buffer Creation", "Simple G-Buffer Options") {}
+	RayTracedGBufferPass() : ::RenderPass("Simple G-Buffer Creation", "Simple G-Buffer Options") {}
 
-  // Implementation of RenderPass interface
-	bool initialize(RenderContext* pRenderContext, ResourceManager::SharedPtr pResManager) override;
-	void execute(RenderContext* pRenderContext) override;
-	void initScene(RenderContext* pRenderContext, Scene::SharedPtr pScene) override;
+	// Implementation of RenderPass interface
+	virtual bool initialize(RenderContext* pRenderContext, ResourceManager::SharedPtr pResManager) override;
+	virtual void execute(RenderContext* pRenderContext) override;
+	//void initScene(RenderContext* pRenderContext, Scene::SharedPtr pScene) override;
+	bool initialize(RenderContext::SharedPtr pRenderContext, ResourceManager::SharedPtr pResManager);
+	void execute(RenderContext::SharedPtr pRenderContext);
 
 	// Override some functions that provide information to the RenderPipeline class
-	bool requiresScene() override     { return true; }
+	bool requiresScene() override { return true; }
 	bool usesRasterization() override { return true; }
 
-    // Internal pass state
+	// Internal pass state
 	GraphicsState::SharedPtr    mpGfxState;             ///< Our graphics pipeline state (i.e., culling, raster, blend settings)
-	Scene::SharedPtr            mpScene;                ///< A pointer to the scene we're rendering
-	RasterLaunch::SharedPtr     mpRaster;               ///< A wrapper managing the shader for our g-buffer creation
+	RtScene::SharedPtr			mpScene;     // Falcor scene abstraction 
+	RayLaunch::SharedPtr		mpRays;      // Encapsulates DirectX Raytracing pass 
 	Fbo::SharedPtr              mpInternalFbo;
 
+
 	// What's our "background" color?
-	vec3                        mBgColor = vec3(0.48, 0.75, 0.85);  ///<  Color stored into our diffuse G-buffer channel if we hit no geometry
+	vec3                        mBgColor = vec3(0.48, 0.75, 0.85);
+	//bool initialize(RenderContext::SharedPtr pRenderContext, ResourceManager::SharedPtr pResManager);
+	//void execute(RenderContext::SharedPtr pRenderContext);
+	///<  Color stored into our diffuse G-buffer channel if we hit no geometry
 };

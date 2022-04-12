@@ -727,7 +727,7 @@ namespace Falcor
 
         if (pTex != nullptr)
         {
-            pTex->setSourceFilename(stripDataDirectories(filename));
+            pTex->setSourceFilename(stripDataDirectories(filename)); //could set to texture's path
         }
 
         return pTex;

@@ -107,6 +107,7 @@ void SimpleDiffuseGIRayGen()
 
 	HaltonState hState;
 	haltonInit(hState, launchIndex.x, launchIndex.y, 1, 1, gFrameCount, 1);
+
 	uint randSeed = initRand(launchIndex.x + launchIndex.y * launchDim.x, gFrameCount, 16);
 
 	// Do shading, if we have geoemtry here (otherwise, output the background color)
@@ -132,6 +133,15 @@ void SimpleDiffuseGIRayGen()
 	//    do better, but the code gets more complex with all error checking conditions.
 	bool colorsNan = any(isnan(shadeColor));
 
+	//takes away the white pixels 2022-03-28
+	/*if (!any(isnan(shadeColor)))
+	{
+		shadeColor = shadeColor * 3.f; //Adjust the color 2022-03-28
+		if (shadeColor.x > 0.9f && shadeColor.y > 0.9f && shadeColor.z > 0.9f)
+		{
+			shadeColor = shadeColor * 0.1f;
+		}
+	}*/
 	// Store out the color of this shaded pixel
 	gOutput[launchIndex] = float4(colorsNan?float3(0,0,0):shadeColor, 1.0f);
 }

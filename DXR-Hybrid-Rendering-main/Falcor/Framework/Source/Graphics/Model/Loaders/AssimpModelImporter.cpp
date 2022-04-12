@@ -307,6 +307,11 @@ namespace Falcor
                     // create a new texture
                     std::string fullpath = folder + '/' + s;
                     fullpath = replaceSubstring(fullpath, "\\", "/");
+                    //test
+                    //if (fullpath == "C:/Users/kajsa.buckard/Desktop/Collections/inVS19/DXR-Hybrid-Rendering-main/Bin/x64/Debug/Data/test/../Bison_textures/bison_BaseColor.png") {
+                    //    fullpath = "test/assets/Bison_textures/bison_BaseColor.png";
+                    //}                    
+                    
                     pTex = createTextureFromFile(fullpath, true, isSrgbRequired(aiType, useSrgb, pMaterial->getShadingModel()));
                     if (pTex)
                     {

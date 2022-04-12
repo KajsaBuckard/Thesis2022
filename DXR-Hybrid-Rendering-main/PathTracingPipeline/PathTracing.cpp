@@ -20,8 +20,11 @@
 #include "../SharedUtils/RenderingPipeline.h"
 #include "Passes/GlobalIllumination.h"
 #include "../CommonPasses/SimpleAccumulationPass.h"
+#include "../CommonPasses/LightProbeGBufferPass.h"
 #include "../CommonPasses/SimpleToneMappingPass.h"
 #include "../CommonPasses/SimpleGBufferPass.h"
+#include "../CommonPasses/CopyToOutputPass.h"
+#include "Passes/RayTracedGBufferPass.h"
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
@@ -30,16 +33,19 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// Add passes into our pipeline
 	pipeline->setPass(0, SimpleGBufferPass::create());
+	//pipeline->setPass(0, LightProbeGBufferPass::create());
+	//pipeline->setPass(0, RayTracedGBufferPass::create());
 	pipeline->setPass(1, GlobalIlluminationPass::create("HDRColorOutput"));  // Output our result to "HDRColorOutput"
 	pipeline->setPass(2, SimpleAccumulationPass::create("HDRColorOutput"));     // Accumulate on "HDRColorOutput"
 	pipeline->setPass(3, SimpleToneMappingPass::create("HDRColorOutput", ResourceManager::kOutputChannel));  // Tonemap "HDRColorOutput" to the output channel
+	//pipeline->setPass(1, CopyToOutputPass::create());
 
 	// Define a set of config / window parameters for our program
     SampleConfig config;
 	config.windowDesc.title = "Path Tracing";
 	config.windowDesc.resizableWindow = true;
-	config.windowDesc.width = 1920; 
-	config.windowDesc.height = 1080;
+	config.windowDesc.width = (uint) 1920; 
+	config.windowDesc.height = (uint) 1080;
 
 	// Start our program!
 	RenderingPipeline::run(pipeline, config);

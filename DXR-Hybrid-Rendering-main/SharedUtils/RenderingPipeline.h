@@ -37,7 +37,7 @@ public:
 	\param[in] canAddPassAfter  Should the user be able to insert a new pass immediately after this one?
 	\param[in] canRemovePass  Should the user be able to remove this pass?
 	*/
-	void setPass(uint32_t passNum, ::RenderPass::SharedPtr pTargetPass, bool canAddPassAfter = false, bool canRemovePass = false);
+	void setPass(uint32_t passNum, ::RenderPass ::SharedPtr pTargetPass, bool canAddPassAfter = false, bool canRemovePass = false);
 
 	/** As with setPass(), but allows multiple RenderPass inputs that can be swapped between
 	*/

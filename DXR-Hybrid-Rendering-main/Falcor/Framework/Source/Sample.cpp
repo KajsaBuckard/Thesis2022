@@ -285,7 +285,6 @@ namespace Falcor
         mFrameRate.resetClock();
         
         mpWindow->msgLoop();
-//        logError("*************** I AM HERE *************** ");
         mpRenderer->onShutdown(this);
         if (gpDevice) gpDevice->flushAndSync();
         mpRenderer = nullptr;
